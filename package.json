@@ -1,27 +1,13 @@
 {
-  "name": "test_es6",
+  "name": "week2",
   "version": "1.0.0",
-  "description": "learing npm, node, etc.",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/patrick-ausderau/test_es6.git"
-  },
-  "keywords": [
-    "npm",
-    "node",
-    "es6"
-  ],
-  "author": "Patrick Ausderau",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/patrick-ausderau/test_es6/issues"
-  },
-  "homepage": "https://github.com/patrick-ausderau/test_es6#readme",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
   }
