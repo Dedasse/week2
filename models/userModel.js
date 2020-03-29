@@ -1,22 +1,31 @@
 'use strict';
 const users = [
   {
-    id: '1',
+    user_id: '1',
     name: 'John Doe',
     email: 'john@metropolia.fi',
     password: '1234',
   },
   {
-    id: '2',
+    user_id: '2',
     name: 'Jane Doez',
     email: 'jane@metropolia.fi',
     password: 'qwer',
   },
 ];
 
+const getUsersList = () => {
+  // remember export
+  // SELECT user_id, name, email FROM wop_user
+};
+
 const getUser = (id) => {
+  // SELECT * FROM wop_user WHERE user_id = ?
+  // remember in controller do :
+  // delete user.password;
+  // before sending the user back
   const user = users.filter((usr) => {
-    if (usr.id === id) {
+    if (usr.user_id === id) {
       return usr;
     }
   });

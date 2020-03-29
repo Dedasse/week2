@@ -10,6 +10,7 @@ const user_list_get = (req, res) => {
 const user_get = (req, res) => {
   console.log('user id parameter', req.params);
   const user = users.filter(user => user.id === req.params.id).pop();
+  delete user.password;
   res.json(user);
 };
 
