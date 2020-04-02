@@ -7,6 +7,13 @@ const user_list_get = (req, res) => {
   res.json(users);
 };
 
+const user_delete = async (req, res) => {
+  console.log('user_put', req.parms);
+  const delUser = await userModel.deleteUser(req.params.id);
+  console.log('cat_delete result from db', delUser);
+  res.json({ deleted: 'OK' });
+};
+
 const user_get = async(req, res) => {
   console.log('user id parameter', req.params);
   
