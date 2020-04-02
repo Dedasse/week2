@@ -2,8 +2,7 @@
 // userRoute
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
-const upload = multer({dest: './uploads/'});
+const {body, sanitizeBody} = require('express-validator');
 const userController = require('../controllers/userController');
 
 router.get('/', userController.user_list_get);
@@ -14,7 +13,9 @@ router.post('/hack', (req, res) => {
   res.send(req.body.search);
 });
 
-router.post('/', userController.user_post);
+router.post('/', [
+    body('name', 'Min 3 chars, required').isLength({min: 3}),
+], userController.user_post);
 
 router.put('/', userController.user_put);
 
