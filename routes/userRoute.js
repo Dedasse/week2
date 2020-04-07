@@ -14,7 +14,10 @@ router.post('/hack', (req, res) => {
 });
 
 router.post('/', [
-    body('name', 'Min 3 chars, required').isLength({min: 3}),
+  body('name', 'Min 3 chars, required').isLength({min: 3}),
+  body('email', 'Not valid email address').isEmail(),
+  body('passwd', 'Min 8 chars, at least one capital letter')
+  .matches('(?=.*[A-Z]).{8,}'),
 ], userController.user_post);
 
 router.put('/', userController.user_put);
