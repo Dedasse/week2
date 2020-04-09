@@ -19,6 +19,7 @@ passport.use(new Strategy(
         if (user.password !== password) {
           return done(null, false, {message: 'Incorrect email or password.'});
         }
+        delete user.password;
         return done(null, {...user}, {message: 'Logged In Successfully'}); // use spread syntax to create shallow copy to get rid of binary row type
       }
       catch (err) {
@@ -31,14 +32,15 @@ passport.use(new JWTStrategy({
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
       secretOrKey: '123qwer',
     },
-    (jwtPayload, done) => {
+    async (jwtPayload, done) => {
 
       //find the user in db if needed. This functionality may be omitted if you store everything you'll need in JWT payload
 
-      const user = userModel.getUser(jwtPayload.user_id);
-      console.log('jwt', jwtPayload, user);
-      if (user) {
-        return done(null, user);
+      const user = await userModel.getUser(jwtPayload.user_id);
+      const plainUser = {...user};
+      console.log('jwt', jwtPayload, plainUser);
+      if (plainUser.user_id) {
+        return done(null, plainUser);
       } else {
         return done(null, false);
       }
