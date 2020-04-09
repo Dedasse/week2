@@ -44,15 +44,15 @@ const cat_post = async (req, res) => {
 
 const cat_put = async (req, res) => {
   console.log('cat_put', req.body);
+
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).json({errors: errors.array()});
-    console.log('aaaaaa');
-  }else {
+  }
+
   const upCat = await catModel.updateCat(req.body);
   console.log('cat_put result from db', upCat);
   res.status(204).send();
-  }
 };
 
 const cat_delete = async (req, res) => {
