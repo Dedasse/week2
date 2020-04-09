@@ -6,6 +6,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 const catRoute = require('./routes/catRoute');
 const userRoute = require('./routes/userRoute');
+const authRoute = require('./routes/authRoute');
+const passport = require('./utils/pass.js');
 
 
 app.use(cors());
@@ -15,8 +17,10 @@ app.use(express.static('public'));
 //app.use (express.static('week2_public-html'));
 app.use(express.static('uploads'));
 
-app.use('/cat', catRoute);
-app.use('/user', userRoute);
+
+app.use('/cat',passport.authenticate('jwt', {session: false}) ,catRoute);
+app.use('/user',passport.authenticate('jwt', {session: false}) ,userRoute);
+app.use('/auth',passport.authenticate('jwt',{session: false}) ,authRoute);
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
