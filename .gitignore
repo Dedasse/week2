@@ -262,3 +262,8 @@ Temporary Items
 out
 gen
 uploads/
+
+# localhostkey and certis
+certrequest.csr
+ssl-cert.pem
+ssl-key.pem
