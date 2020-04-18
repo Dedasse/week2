@@ -1,4 +1,4 @@
-
+//'use strict'; module are strict by default ;)
 const https = require('https');
 const http = require('http');
 const fs = require('fs');
@@ -13,12 +13,12 @@ const options = {
   cert: sslcert
 };
 
-const httpsRedirect= (req, res) => {
-  res.writeHead(301, { 'Location': 'https://localhost:8000' + req.url });
+const httpsRedirect = (req, res) => {
+  res.writeHead(301, { 'Location': `https://localhost:${httpsPort}` + req.url });
   res.end();
 };
 
 module.exports = (app, httpPort) => {
-  https.createServer(options, app).listen(httpsPort);
-  http.createServer(httpsRedirect).listen(httpPort);
- };
+   https.createServer(options, app).listen(httpsPort);
+   http.createServer(httpsRedirect).listen(httpPort);
+};

@@ -263,7 +263,7 @@ out
 gen
 uploads/
 
-# localhostkey and certis
+# localhost https key and certificates
 certrequest.csr
 ssl-cert.pem
 ssl-key.pem
