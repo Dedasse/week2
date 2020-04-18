@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
+module.exports =(app,httpPort)=>{
 app.enable('trust proxy');
 app.use ((req, res, next) => {
   if (req.secure) {   
@@ -14,4 +15,5 @@ app.use ((req, res, next) => {
   }
 });
 
-app.listen(3000);
+app.listen(httpPort);
+};
