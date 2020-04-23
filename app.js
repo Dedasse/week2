@@ -14,6 +14,7 @@ app.use(cors());
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));
+app.use(express.static('week2_public_html'));
 app.use(express.static('uploads'));
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
