@@ -47,6 +47,7 @@ const user_create_post = async (req, res, next) => {
       req.body.name,
       req.body.username,
       hash, // TODO: save hash instead of the actual password
+      req.body.s_user,
     ];
 
     if (await userModel.insertUser(params)) {

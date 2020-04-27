@@ -12,6 +12,7 @@ router.post('/register',
       body('username', 'email is not valid').isEmail(),
       body('password', 'at least one upper case letter').
       matches('(?=.*[A-Z]).{8,}'),
+      //body('s_user', )
       // sanitizeBody('name').escape(),
     ],
     authController.user_create_post,
