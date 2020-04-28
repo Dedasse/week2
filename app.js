@@ -7,6 +7,7 @@ const port = 3000;
 const passport = require('./utils/pass');
 const authRoute = require('./routes/authRoute');
 const catRoute = require('./routes/catRoute');
+const periodroute = require('./routes/periodRoute');
 const userRoute = require('./routes/userRoute');
 
 app.use(cors());
@@ -17,6 +18,7 @@ app.use(express.static('uploads'));
 app.use('/thumbnails', express.static('thumbnails'));
 
 app.use('/auth', authRoute);
+app.use('/period', periodroute);
 app.use('/cat', passport.authenticate('jwt', {session: false}), catRoute);
 app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 
