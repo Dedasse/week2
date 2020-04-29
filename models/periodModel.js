@@ -4,16 +4,19 @@ const promisePool = require('../database/db').promise();
 
 const getAllPeriods = async () => {
   try {
-    const [rows] = await promisePool.query('SELECT      opinto_id, Period_name,Courses.course_name  FROM Period INNER JOIN Courses ON opinto_id = belong_id');
+    const [rows] = await promisePool.query('SELECT      period_id,periods.name  FROM periods ');
     return rows;
   } catch (e) {
     console.error('error', e.message);
   }
 };
+
+
+
 const getperiod = async (id) => {
   try {
-    const [rows] = await promisePool.query('SELECT opinto_id,Period_name,Courses.course_name FROM Period INNER JOIN Courses ON belong_id=opinto_id WHERE  belong_id = ? ' , [ id ]);
-    return rows[0];
+    const [rows] = await promisePool.query('SELECT periods.name,courses.name FROM periods INNER JOIN courses ON fk_period_id=period_id  WHERE  period_id = ? ' , [ id ]);
+    return rows;
   } catch (e) {
     console.error('error', e.message);
   }

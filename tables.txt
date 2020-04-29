@@ -1,68 +1,88 @@
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
-  `name` text NOT NULL,
-  `email` text NOT NULL,
-  `password` text NOT NULL,
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `s_user` int(1)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO `user` (`user_id`, `name`, `email`, `password`,`s_user`) VALUES
+INSERT INTO `users` (`user_id`, `name`, `email`, `password`,`s_user`) VALUES
 (1, 'Mikael Ylivaara', 'mikaely@metropolia.fi', '$2a$10$5RzpyimIeuzNqW7G8seBiOzBiWBvrSWroDomxMa0HzU6K2ddSgixS','1'),
 (2, 'Roni Hänninen', 'ronihan@metropolia.fi', '$2a$10$H7bXhRqd68DjwFIVkw3G1OpfIdRWIRb735GvvzCBeuMhac/ZniGba','1'),
-(3, 'Jan Lindholm', 'janlind@metropolia.fi','$2a$15$dRPLgT3zHUeZW8rdPBvXQeCoc7mwm8crP0isdc7ImvWweQXLFoIOG','1');
+(3, 'Jan Lindholm', 'janlind@metropolia.fi','$2a$15$dRPLgT3zHUeZW8rdPBvXQeCoc7mwm8crP0isdc7ImvWweQXLFoIOG','1'),
+(4, 'Tarzan K', 'tarzank@metropolia.fi', '$2a$15$ObBeU5PGYXy2QCybySJaE.B.GpR72YrcVdgQC8Yujpe2AhUliiP9C','0');
 
 
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`),
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
-CREATE TABLE `Period` (
-`opinto_id` int(11) NOT NULL,
-`Period_name` text NOT NULL ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+CREATE TABLE `periods` (
+`period_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+`name` varchar(50) NOT NULL );
 
 
-INSERT INTO `Period` (`opinto_id`,`Period_name`) VALUES
+INSERT INTO `periods` (`period_id`,`name`) VALUES
 (1, 'Älykkäät IoT laitteet'),
 (2, 'Mobiilit terveyssovellutukset'),
 (3, 'Pelikehitys'),
 (4, 'Web-tekniikat ja digitaalinen media');
 
-ALTER TABLE `Period`
-  ADD PRIMARY KEY (`opinto_id`),
-  MODIFY `opinto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+CREATE TABLE `teachers` (
+  `teacher_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(50) NOT NULL,
+  `picture` varchar(50)
+);
 
-CREATE TABLE `Courses`(
+CREATE TABLE `courses`(
   `course_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `course_name` text NOT NULL,
-  `teacher` int(11),
-  `belong_id` int(11) NOT NULL
+  `fk_period_id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `fk_teacher_id` int(11) NOT NULL
 );
 
-INSERT INTO `Courses` (`course_id`,`course_name`,`teacher`,`belong_id`) VALUES
-(1, 'Smart',1,1),
-(2, 'Verkot',2,1),
-(3, 'Linux',3,1),
-(4, 'Digitaalitekniikka',4,1),
-(5, 'C#',5,3),
-(6, 'Unity',5,3),
-(7, 'Databases',6,3),
-(8, 'Android',5,2),
-(9, 'Hyte',7,2),
-(10, 'Media',8,4),
-(11, 'Web-tekniikat',8,4);
+INSERT INTO `courses` (`course_id`,`fk_period_id`,`name`,`fk_teacher_id`) VALUES
+(1,1, 'Smart',1),
+(2,1, 'Verkot',2),
+(3,1, 'Linux',3),
+(4,1, 'Digitaalitekniikka',4),
+(5,3, 'C#',5),
+(6,3, 'Unity',5),
+(7,3, 'Databases',6),
+(8,2, 'Android',5),
+(9,2, 'Hyte',7),
+(10,4, 'Media',8),
+(11,4, 'Web-tekniikat',8),
+(12,4, 'Matematiikka', 3),
+(13,4, 'Digitaalinen media', 5),
+(14,4, 'Fysiikka', 2),
+(15,4, 'Viestintä', 4),
+(16,2, 'Viestintä', 4),
+(17,2, 'Matemaatiikka', 3),
+(18,2, 'Fysiikka', 2),
+(19,3, 'Matematiikka', 3),
+(20,3, 'Fysiikka', 2),
+(21,1, 'Matematiikka', 3),
+(22,1, 'Fysiikka', 2),
+(23,1, 'Englanti', 6),
+(24,3, 'Englanti', 6),
+(25,2, 'Java', 7);
 
-CREATE TABLE `Teachers` (
-  `ope_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `Name` text NOT NULL,
-  `Picture` text
+ALTER TABLE courses
+ FOREIGN KEY (`fk_period_id`) REFERENCES periods(period_id),
+  FOREIGN KEY (`fk_teacher_id`) REFERENCES teachers(teacher_id) 
+
+CREATE TABLE `course_info` (
+  `info_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `fk_course_id` int(11) NOT NULL ,
+  `name` varchar(50) NOT NULL,
+  `information` text NOT NULL,
+   FOREIGN KEY (`fk_course_id`) REFERENCES courses(course_id) 
 );
 
-INSERT INTO `Teachers` (`ope_id`,`Name`,`Picture`) VALUES
-(1,'Keijo Länsikunnas','Keijo'),
-
-
-
-
-
+CREATE TABLE `user_notes` (
+  `who_id` int(11) NOT NULL ,
+  `course` int(11) REFERENCES courses(course_id),
+  `teacher` int(11) REFERENCES teachers(teacher_id),
+  `info` int(11) REFERENCES course_info(info_id),
+  `message` text NOT NULL
+  FOREIGN KEY (`who_id`)REFERENCES users(user_id)
+);
 
 
