@@ -95,7 +95,7 @@ const getCat = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/periods', options);
+    const response = await fetch(url + '/period', options);
     const cats = await response.json();
     createCatCards(cats);
   }
@@ -128,7 +128,7 @@ const getUsers = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/users', options);
+    const response = await fetch(url + '/user', options);
     const users = await response.json();
     createUserOptions(users);
   }
