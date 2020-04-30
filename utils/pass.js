@@ -21,14 +21,14 @@ passport.use(new Strategy(
           return done(null, false, {message: 'Incorrect email or password.'});
         }
         delete user.password;
-        return done(null, {...user}, {message: 'Logged In Successfully'}); // use spread syntax to create shallow copy to get rid of binary row type
+        return done(null, {...user}, {message: 'Logged In Successfully'}); 
       }
       catch (err) {
         return done(err);
       }
     }));
 
-// TODO: JWT strategy for handling bearer token
+// JWT strategy for handling bearer token
 passport.use(new JWTStrategy({
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
       secretOrKey: '123qwer',

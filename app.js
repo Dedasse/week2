@@ -5,8 +5,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const passport = require('./utils/pass');
+const admin = require('./utils/admin');
 const authRoute = require('./routes/authRoute');
-const catRoute = require('./routes/catRoute');
 const periodRoute = require('./routes/periodRoute');
 const courseRoute = require('./routes/courseRoute');
 const userRoute = require('./routes/userRoute');
@@ -27,8 +27,7 @@ app.use('/course_info', passport.authenticate('jwt',{session: false}), course_in
 app.use('/user_note', passport.authenticate('jwt',{session: false}), user_noteRoute);
 app.use('/auth', authRoute);
 app.use('/period', periodRoute);
-app.use('/course',passport.authenticate('jwt', {session: false}), courseRoute);
-app.use('/cat', passport.authenticate('jwt', {session: false}), catRoute);
+app.use('/course',[passport.authenticate('jwt', {session: false}),admin], courseRoute);
 app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 
 

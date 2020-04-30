@@ -1,12 +1,12 @@
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL UNIQUE,
   `password` varchar(100) NOT NULL,
-  `s_user` int(1)
+  `isAdmin` boolean
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` (`user_id`, `name`, `email`, `password`,`s_user`) VALUES
+INSERT INTO `users` (`user_id`, `name`, `email`, `password`,`isAdmin`) VALUES
 (1, 'Mikael Ylivaara', 'mikaely@metropolia.fi', '$2a$10$5RzpyimIeuzNqW7G8seBiOzBiWBvrSWroDomxMa0HzU6K2ddSgixS','1'),
 (2, 'Roni Hänninen', 'ronihan@metropolia.fi', '$2a$10$H7bXhRqd68DjwFIVkw3G1OpfIdRWIRb735GvvzCBeuMhac/ZniGba','1'),
 (3, 'Jan Lindholm', 'janlind@metropolia.fi','$2a$15$dRPLgT3zHUeZW8rdPBvXQeCoc7mwm8crP0isdc7ImvWweQXLFoIOG','1'),

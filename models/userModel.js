@@ -13,7 +13,7 @@ const getAllUsers = async () => {
 
 const getUser = async (id) => {
   try {
-    const [rows] = await promisePool.query('SELECT user_id, name, email FROM users WHERE user_id = ?', [ id ]);
+    const [rows] = await promisePool.query('SELECT user_id, name, email,isAdmin FROM users WHERE user_id = ?', [ id ]);
     return rows[0];
   } catch (e) {
     console.error('error', e.message);
@@ -33,7 +33,7 @@ const insertUser = async (user) => {
 /*const insertUser = async (user) => {
   try {
     console.log('insert user?', user);
-    const [rows] = await promisePool.query('INSERT INTO user (name, email, password, s_user) VALUES (?, ?, ?, ?)', user);
+    const [rows] = await promisePool.query('INSERT INTO user (name, email, password, isAdmin) VALUES (?, ?, ?, ?)', user);
     return rows;
   } catch (e) {
     console.error('error', e.message);
@@ -43,7 +43,7 @@ const insertUser = async (user) => {
 const updateUser = async (user) => {
   try {
     console.log('insert user?', user);
-    const [rows] = await promisePool.query('UPDATE users SET name = ?, email = ?, password = ?, s_user = ? WHERE users.user_id = ?', [ user.name, user.email, user.passwd, user.s_user, user.id ]);
+    const [rows] = await promisePool.query('UPDATE users SET name = ?, email = ?, password = ?, isAdmin = ? WHERE users.user_id = ?', [ user.name, user.email, user.passwd, user.isAdmin, user.id ]);
     return rows;
   } catch (e) {
     console.error('updateUser model crash', e.message);
