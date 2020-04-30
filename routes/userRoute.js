@@ -2,6 +2,8 @@
 // userRoute
 const express = require('express');
 const router = express.Router();
+const passport = require('../utils/pass');
+const admin = require('../utils/admin');
 const {body, sanitizeBody} = require('express-validator');
 const userController = require('../controllers/userController');
 
@@ -13,17 +15,11 @@ router.post('/hack', (req, res) => {
   res.send(req.body.search);
 });
 
-/*
-router.post('/', [
-  body('name', 'Min 3 chars, required').isLength({min: 3}),
-  body('email', 'Not valid email address').isEmail(),
-  body('passwd', 'Min 8 chars, at least one capital letter')
-  .matches('(?=.*[A-Z]).{8,}'),
-], userController.user_post);
- */
 
-router.put('/', userController.user_put);
+router.put('/:id',[passport.authenticate('jwt', {session: false}),admin], userController.user_put);
 
-router.delete('/:id', userController.user_delete);
+router.update
+
+router.delete('/:id',[passport.authenticate('jwt', {session: false}),admin], userController.user_delete);
 
 module.exports = router;

@@ -76,6 +76,74 @@ CREATE TABLE `course_info` (
    FOREIGN KEY (`fk_course_id`) REFERENCES courses(course_id) 
 );
 
+INSERT INTO `course_info` (`info_id`, `fk_course_id`, `name`, `information`) VALUES
+(1, 1, 'Smart', 'Kurssin aikana opiskellaan C-ohjelmointia aloittelijatasolla. Kurssin lopputyönä ohjelmoidaan monenlaisia
+sensoreita hyödyntävä robotti suorittamaan useita eri tehtäviä. Lopputyössä yhdistyvät muiden kurssien aikana opitut aiheet 
+niin, että C-ohjelmointikielen lisäksi opiskelijalla tulee olla jokseenkin hallussa myös Linux, verkkotyöskentely ja 
+digitaalitekniikan erilaiset menetelmät.'),
+(2, 1, 'Verkot', 'Kurssin tavoitteena on tutustuttaa opiskelija verkkojen maailmaan. Aiheina kurssilla ovat niin langalliset 
+kuin langattomatkin verkot, ja läpi käydään kaikki 4G- ja Bluetooth-yhteyksistä erilaisiin kaapelityyppeihin ja 
+verkkojen tietoturvaan unohtamatta kuitenkaan verkkoprotokollia tai tiedonsiirron eri menetelmiä.'),
+(3, 1, 'Linux', 'Kurssin aikana käydään läpi Linux-perusteita, kuten käyttöjärjestelmän itsensä asennus, peruskomentoja 
+sekä tiedosto-oikeuksien ja käyttäjien hallintaa. Kurssin päätteeksi tavoitteena on luoda yhteys Raspberry Pi -tietokoneen 
+(tai vastaavan) ja robotin välille käyttäen MQTT-protokollaa ja WLAN-reititintä.'),
+(4, 1, 'Digitaalitekniikka', 'Kurssilla tutustutaan tiedon eri lajeihin, niiden käsittelyyn, tiedon analogisiin ja 
+digitaalisiin esitystapoihin, lukujärjestelmiin (binääri- ja desimaaliluvut ym.) ja loogisiin funktioihin (AND, OR, NOT ym.).'),
+(5, 1, 'Matematiikka', 'Kurssin aikana muistuvat mieleen kolmion trigonometria ja muut trigonometriset funktiot. Lisäksi 
+käsitellään eksponenttia ja erilaisia logaritmifunktioita.'),
+(6, 1, 'Fysiikka', 'Kurssin pääaiheina ovat sähkövirta, resistanssi, Ohmin lait sekä Kirchhoffin virta- ja jännitelait.'),
+(7, 1, 'Englanti', 'Kurssilla käsitellään muodollisen ja tuttavallisen kielen eroja, lähdeviittauksia ja parafraaseja. 
+Lisäksi kurssin aikana pidetään työhaastatteluharjoitus, jossa opiskelijat ryhmissä haastattelevat toisiaan kuin oikeassa 
+työhaastattelutilanteessa.'),
+(8, 2, 'Java', 'Kurssilla käydään läpi Java-ohjelmoinnin alkeita. Kurssin päätavoitteena on opettaa opiskelijoille perusteet, 
+joita he voivat hyödyntää toteuksen myöhemmässä Android-ohjelmointiosiossa. Aiheisiin kuuluvat mm. tietojoukot 
+(array, collection ym.) ja olio-ohjelmointi.'),
+(9, 2, 'Android', 'Kurssilla keskitytään Java-ohjelmoinnin Android-osuuteen. Opiskelijat oppivat Android-kehityksestä ja 
+suunnittelevat ja ohjelmoivat oppimansa pohjalta lopputyönään ryhmissä mobiilisovelluksen, joka tavalla tai toisella liittyy 
+hyvinvointi- tai terveysteknologiaan.'),
+(10, 2, 'Hyvinvointiteknologia', 'Kurssin aikana tutustutaan kaikenlaiseen hyvinvointiteknologiaan. Tällä tarkoitetaan erilaisia 
+tekniikoita, joilla omaa hyvinvointia voi edistää ja seurata. Lisäksi käydään läpi terveysteknologiaa, jota on lähinnä 
+käytössä sairaaloissa sairauksien diagnosointia, ehkäisyä ja hoitoa varten.'),
+(11, 2, 'Viestintä', 'Kurssilla perehdytään viestinnän taitojen syventämiseen. Keskiössä on ajatus, jonka mukaisesti puhetapa 
+on tärkeämpi kuin itse sisältö. Kurssin lopputyönä pidetään ns. ohjelmapuhe, jossa opiskelija hyödyntää oppimaansa ja puhuu muulle 
+ryhmälle vakuuttavasti vapaavalintaisesta aiheesta.'),
+(12, 2, 'Matematiikka', 'Kurssilla opitaan lukujoukoista ja -järjestelmistä sekä suurelaskennasta, ja verestetään ensimmäisen ja 
+toisen asteen yhtälöiden laskutaitoja.'),
+(13, 2, 'Fysiikka', 'Kurssilla käydään läpi jatkuvuuden laki ja dynamiikan peruslaki. Lisäksi opitaan mekaanisesta ja 
+kineettisestä energiasta, niiden säilyvyydestä sekä toisiinsa olennaisesti liittyvistä tehosta ja työstä.'),
+(14, 3, 'C#', 'Kurssin tarkoitus on paljolti sama kuin Mobiilit terveyssovellukset -toteutuksen Java-osion. Kurssilla 
+käydään läpi C#-ohjelmointikielen alkeita. Näin opiskelija saa tarvittavat tiedot ja taidot lopputyön suorittamista varten.'),
+(15, 3, 'Unity', 'Toteutuksen lopputyönä opiskelijat rakentavat ryhmissä pienen pelin Unity-pelimoottorissa. C#-kielen 
+hyödyntäminen lopputyössä saattaa jäädä jokseenkin vähäiseksi, sillä Unity-ohjelma sisältää monia kiertoteitä varsinaisen 
+ohjelmoinnin välttämiseksi.'),
+(16, 3, 'Tietokannat', 'Kurssilla tutustutaan relaatiotietokannoissa käytettävään SQL-kyselykieleen. Opiskelijat luovat omat 
+tietokantansa, joiden avulla kurssin tehtävät suoritetaan. Tietokantojen ja SQL:n merkitys muussa toteutuksessa on 
+vähäinen, mutta se toimii pohjana myöhempiä kursseja varten.'),
+(17, 3, 'Matematiikka', 'Kurssin aikana palautetaan mieleen yhtälöiden muodostamista ja ratkaisua sekä yhtälöpareja ja suoria. 
+Suorien yhteydessä koordinaatistoja tietysti käsitellään myös. Lisäksi tutustutaan matriisien eli reaaliluvuista muodostuvien 
+taulukoiden perusteisiin.'),
+(18, 3, 'Fysiikka', 'Kurssin aiheita ovat mm. kvantittunut sähkövaraus, Coulombin laki, sähkökenttä ja superpositioperiaate. 
+Aiemmalta kurssilta tuttua energian säilymislakia sivutaan myös.'),
+(19, 3, 'Englanti', 'Tällä kurssilla harjoitellaan CV:n ja työhakemuksen tekoa. Opiskelijat pitävät myös ryhmissä esitelmän 
+valitsemastaan IT-alan yrityksestä englannin kielellä. Lopputyönä tehdään vaativa TOEFL-testi, jonka suorittamiseen 
+kuluu useampi päivä.'),
+(20, 4, 'Digitaalinen media', 'Kurssin aikana opiskelijat oppivat valo- ja videokuvauksen sekä kuvan- ja videonkäsittelyn 
+perustaitoja. Aiheisiin kuuluvat mm. erilaiset värimallit (RGB, CMYK ym.), vektori- ja bittikarttakuvien erot ja kuvan 
+resoluutio. Lopputyönä toteutetaan ryhmissä ns. videosprintit, joissa opiskelijat pääsevät testaamaan oppimiaan taitoja 
+käytännössä.'),
+(21, 4, 'HTML, CSS ja JavaScript', 'Kurssin sisältöihin kuuluuvat HTML, CSS ja JavaScript, jotka liittyvät kaikki olennaisesti 
+toisiinsa. HTML-merkintäkielen avulla luodaan verkkosivujen runko, CSS-tyyliohjeilla ulkoasu ja JavaScript-
+ohjelmointikielellä varsinainen toiminnallisuus. Opiskelija oppii kaikkien näiden perusteet kurssin aikana.'),
+(22, 4, 'Matematiikka', 'Kurssilla käydään läpi lukujoukkoja ja erilaisia peruslaskutoimituksia liittyen mm. murtolukuihin 
+ja potenssiin. Tämän lisäksi aiheina ovat yksiköt ja niiden muunnokset sekä symboliyhtälöt.'),
+(23, 4, 'Fysiikka', 'Kurssin aiheina ovat tasainen ja tasaisesti kiihtyvä liike sekä vinoheittoliike. Kurssin sisältö on osittain 
+hyvin samankaltainen kuin toteutuksen matematiikan kurssin, sillä luennoilla käsitellään myös suurelaskentaa ja yksiköiden 
+muunnoksia.'),
+(24, 4, 'Viestintä', 'Kurssin päätavoitteena on alaantutustumistehtävä, jonka aikana opiskelijat käyvät pienryhmissä tutustumassa 
+paikalliseen IT-yritykseen ja tekevät siitä esitelmän muulle ryhmälle. Vierailusta kirjoitetaan myös monisivuinen, 
+kirjallinen raportti. Raporttia kirjoittaessa tarkoitus on perehtyä tiettyjen standardien ja tehokkaan kirjoitustyylin 
+puitteissa kirjoittamiseen.');
+
 CREATE TABLE `user_notes` (
   `who_id` int(11) NOT NULL ,
   `course` int(11) REFERENCES courses(course_id),
